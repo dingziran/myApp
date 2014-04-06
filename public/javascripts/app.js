@@ -7,7 +7,7 @@ app.config(function($httpProvider) {
 app.config(['$routeProvider',function($routeProvider){
     $routeProvider
         .when('/',{
-            template: ''
+            templateUrl:'/views/dashboard.html'
         })
         .when('/create',{
             controller: 'CreateController',
@@ -25,9 +25,6 @@ app.config(['$routeProvider',function($routeProvider){
         .otherwise({redirectTo: '/'});
 }]);
 app.controller('HomeController',function($scope,$location){
-    $scope.create=function(){$location.path('/create')};
-    $scope.list=function(){$location.path('/list')};
-    $scope.login=function(){$location.path('/login')};
 });
 
 
