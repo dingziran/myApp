@@ -1,7 +1,7 @@
 
     <div >
-        <h2>本例使用ng-form,form validate,ng-show演示如何登录</h2>
-        <form name="signup_form" ng-submit="submitForm()" novalidate>
+        <h2 class="page-header">本例使用ng-form,form validate,ng-show演示如何登录</h2>
+        <form name="signup_form" ng-submit="submitForm()" role="form" novalidate>
             <div ng-repeat="field in fields" ng-form="signup_form_input">
                 <input type="text" name="dynamic_input" ng-required="field.isRequired" ng-model="field.name" placeholder="{{field.placeholder}}" />
                 <div ng-show="signup_form_input.dynamic_input.$dirty && signup_form_input.dynamic_input.$invalid">
