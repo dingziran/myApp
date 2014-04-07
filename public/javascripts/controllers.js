@@ -3,11 +3,17 @@
  */
 var app=angular.module("myApp");
 app.controller('ListController',function($scope,$firebase){
-    var usersRef = new Firebase("https://luminous-fire-4025.firebaseio.com/people");
+    var usersRef = new Firebase("https://luminous-fire-4025.firebaseio.com/user");
     $scope.users = $firebase(usersRef);
+    $scope.remove = function(user){
+        for(var item in $scope.users){
+            if($scope.users[item]==user)
+                $scope.users.$remove(item);
+        }
+    }
 });
 app.controller('CreateController',function($scope,$firebase){
-    var usersRef = new Firebase("https://luminous-fire-4025.firebaseio.com/people");
+    var usersRef = new Firebase("https://luminous-fire-4025.firebaseio.com/user");
     $scope.users = $firebase(usersRef);
     $scope.user={};
     $scope.create = function() {
