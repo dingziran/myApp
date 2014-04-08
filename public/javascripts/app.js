@@ -21,6 +21,10 @@ app.config(['$routeProvider',function($routeProvider){
             controller: 'LoginController',
             templateUrl:'/views/login.html'
         })
+        .when('/update/:key',{
+            controller: 'UpdateController',
+            templateUrl:'/views/update.html'
+        })
 
         .otherwise({redirectTo: '/'});
 }]);
