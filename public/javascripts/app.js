@@ -1,4 +1,4 @@
-var app=angular.module("myApp",['ngRoute','firebase']);
+var app=angular.module("myApp",['ngRoute','firebase','ui.bootstrap']);
 app.config(function($httpProvider) {
     //Enable cross domain calls
     $httpProvider.defaults.useXDomain = true;
@@ -24,6 +24,10 @@ app.config(['$routeProvider',function($routeProvider){
         .when('/update/:key',{
             controller: 'UpdateController',
             templateUrl:'/views/update.html'
+        })
+        .when('/select',{
+            controller:'SelectController',
+            templateUrl:'/views/select.html'
         })
 
         .otherwise({redirectTo: '/'});

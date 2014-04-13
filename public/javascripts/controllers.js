@@ -55,3 +55,11 @@ app.controller('UpdateController',function($scope,$routeParams,$firebase,$locati
         $location.path("list");
     }
 });
+
+app.controller('SelectController',function($scope){
+    $scope.items = [
+        "The first choice!",
+        "And another choice for you.",
+        "but wait! A third!"
+    ];
+});
