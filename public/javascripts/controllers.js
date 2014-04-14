@@ -5,21 +5,11 @@ var app=angular.module("myApp");
 app.controller('ListController',function($scope,$firebase,$location){
     var usersRef = new Firebase("https://luminous-fire-4025.firebaseio.com/user");
     $scope.users = $firebase(usersRef);
-    $scope.remove = function(user){
-        for(var item in $scope.users){
-            if($scope.users[item]==user){
-                $scope.users.$remove(item);
-                break;
-            }
-        }
+    $scope.remove = function(key){
+          $scope.users.$remove(key);
     }
-    $scope.update = function(user){
-        for(var item in $scope.users){
-            if($scope.users[item]==user){
-                $location.path("update/"+item);
-                break;
-            }
-        }
+    $scope.update = function(key){
+          $location.path("update/"+key);
     }
 });
 app.controller('CreateController',function($scope,$firebase){

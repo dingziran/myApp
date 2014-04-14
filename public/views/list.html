@@ -11,13 +11,13 @@
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
-            <tr ng-repeat="user in users">
+            <tr ng-repeat="(key,user) in users">
                 <td>{{$index+1}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.name}}</td>
                 <td>{{user.age}}</td>
-                <td ng-click="update(user)"><span class="glyphicon glyphicon-pencil"></span></td>
-                <td ng-click="remove(user)"><span class="glyphicon glyphicon-remove"></span></td>
+                <td ng-click="update(key)"><span class="glyphicon glyphicon-pencil"></span></td>
+                <td ng-click="remove(key)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>
         </table>
     </div>
