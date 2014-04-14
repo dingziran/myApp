@@ -24,15 +24,26 @@ app.controller('CreateController',function($scope,$firebase){
     };
 });
 
-app.controller('LoginController',function($scope){
-    $scope.fields = [
-        {placeholder: 'Username', isRequired: true},
-        {placeholder: 'Password', isRequired: true},
-        {placeholder: 'Email (optional)', isRequired: false}
-    ];
-
+app.controller('LoginController',function($scope,$firebaseSimpleLogin){
+    var dataRef = new Firebase("https://luminous-fire-4025.firebaseio.com");
+    $scope.loginObj = $firebaseSimpleLogin(dataRef);
+    $scope.login={};
+    $scope.createUser=function(){
+        $scope.loginObj.$createUser($scope.create.email,$scope.create.password).then(function(){
+            $scope.create={};
+        },function(error){
+            console.error('Create failed:',error);
+        })
+    }
     $scope.submitForm = function(){
-        alert("it works!");
+        $scope.loginObj.$login('password', {
+            email: $scope.login.email,
+            password: $scope.login.password
+        }).then(function(user) {
+                $scope.login={};
+            }, function(error) {
+                console.error('Login failed: ', error);
+            });
     };
 });
 app.controller('UpdateController',function($scope,$routeParams,$firebase,$location){
